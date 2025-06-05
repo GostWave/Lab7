@@ -4,22 +4,66 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e148c56a-75bc-4a08-8fcb-724a44cec23c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab7.iml" afterDir="false" />
+    <list default="true" id="e148c56a-75bc-4a08-8fcb-724a44cec23c" name="Changes" comment="init from lab6">
+      <change afterPath="$PROJECT_DIR$/src/common/DatabaseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/MovieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ConsoleCaller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/IO/FileManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/Clear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/ExecuteScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/commands/Remove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/Remove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/commands/Save.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/commands/Shuffle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/Shuffle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/commands/Update.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/CollectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/ConsoleCaller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/IO/FileManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Clear.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/ExecuteScript.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/GroupCounting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/commands/GroupCounting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/commands/Info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/PrintMpaa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/commands/PrintMpaa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/PrintOscarsCount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/commands/PrintOscarsCount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Remove.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Save.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/commands/Show.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Shuffle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Update.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "GostWave"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/GostWave/Lab7.git",
+    "accountId": "26b6b018-ad62-4baa-81b6-0b6ded368e6d"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8
 }]]></component>
@@ -31,9 +75,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -57,11 +107,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749118104461</updated>
-      <workItem from="1749118105574" duration="102000" />
+      <workItem from="1749118105574" duration="7593000" />
     </task>
+    <task id="LOCAL-00001" summary="init from lab6">
+      <option name="closed" value="true" />
+      <created>1749118319796</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749118319796</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init from lab6" />
+    <option name="LAST_COMMIT_MESSAGE" value="init from lab6" />
   </component>
 </project>

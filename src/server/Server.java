@@ -5,7 +5,7 @@ import common.Request;
 import common.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import server.IO.FileManager;
+//import server.IO.FileManager;
 import server.commands.Command;
 
 import java.io.ByteArrayInputStream;
@@ -24,8 +24,8 @@ public class Server {
 //    private static final Logger logger = LogManager.getLogger(Server.class);
 
     private CollectionManager collectionManager;
-    private ConsoleCaller consoleCaller;
-    private FileManager fileManager;
+//    private ConsoleCaller consoleCaller;
+//    private FileManager fileManager;
     private CommandManager commandManager;
     private static Server server;
 
@@ -40,12 +40,12 @@ public class Server {
 
 
     public void start() {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            fileManager.fileWriter();
-//            logger.info("Сервер остановлен. Коллекция сохранена в файл.");
-            System.out.println("Сервер остановлен. Коллекция сохранена в файл.");
-        }));
-        new Thread(consoleCaller).start();
+//        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+////            fileManager.fileWriter();
+////            logger.info("Сервер остановлен. Коллекция сохранена в файл.");
+//            System.out.println("Сервер остановлен. Коллекция сохранена в файл.");
+//        }));
+//        new Thread(consoleCaller).start();
 
         try (Selector selector = Selector.open();
              ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
@@ -154,13 +154,13 @@ public class Server {
         this.collectionManager = collectionManager;
     }
 
-    public void setConsoleCaller(ConsoleCaller consoleCaller) {
-        this.consoleCaller = consoleCaller;
-    }
+//    public void setConsoleCaller(ConsoleCaller consoleCaller) {
+//        this.consoleCaller = consoleCaller;
+//    }
 
-    public void setFileManager(FileManager fileManager) {
-        this.fileManager = fileManager;
-    }
+//    public void setFileManager(FileManager fileManager) {
+//        this.fileManager = fileManager;
+//    }
 
     public void setCommandManager(CommandManager commandManager) {
         this.commandManager = commandManager;
@@ -173,12 +173,12 @@ public class Server {
         return commandManager;
     }
 
-    public ConsoleCaller getConsoleCaller() {
-        return consoleCaller;
-    }
+//    public ConsoleCaller getConsoleCaller() {
+//        return consoleCaller;
+//    }
 
-    public FileManager getFileManager() {
-        return fileManager;
-    }
+//    public FileManager getFileManager() {
+//        return fileManager;
+//    }
 }
 
