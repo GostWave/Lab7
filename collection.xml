@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<movies>
+    <movie id="1">
+        <name>qwe</name>
+        <coordinates>
+            <x>3.0</x>
+            <y>3</y>
+        </coordinates>
+        <genre>ACTION</genre>
+        <mpaaRating>R</mpaaRating>
+        <oscarsCount>42</oscarsCount>
+        <operator>
+            <birthday>2000-01-01T00:00:00+03:00[Europe/Moscow]</birthday>
+            <name>ds</name>
+            <passportID>3242342</passportID>
+        </operator>
+        <creationDate>2025-06-05</creationDate>
+    </movie>
+</movies>
