@@ -168,8 +168,8 @@ public class MovieFiller {
                 if (content.length != 3) {
                     throw new IllegalArgumentException("Ошибка: формат должен быть dd.MM.yyyy.");
                 }
-                ZonedDateTime date = ZonedDateTime.of(Integer.parseInt(content[2]), Integer.parseInt(content[1]), Integer.parseInt(content[0]), 0, 0, 0, 0, ZoneId.of("Europe/Moscow"));
-                if (date.isAfter(ZonedDateTime.now()) || date.getYear() < 1500) {
+                LocalDate date = LocalDate.of(Integer.parseInt(content[2]), Integer.parseInt(content[1]), Integer.parseInt(content[0]));
+                if (date.isAfter(LocalDate.now()) || date.getYear() < 1500) {
                     throw new DateTimeException("Ошибка: дата не может быть в будущем или раньше 1500 года.");
                 }
                 person.setBirthday(date);

@@ -1,11 +1,13 @@
 package server.commands;
 
+import common.MovieDAO;
 import common.Response;
 import common.collectionObject.Movie;
 import server.CollectionManager;
 import server.Server;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 
 public class Add extends Command {
 
@@ -14,7 +16,15 @@ public class Add extends Command {
     public Response execute(String strArg, Serializable objArg)  {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         Movie movie = (Movie) objArg;
-        collectionManager.addMovie(movie);
+
+
+        MovieDAO movieDAO = Server.getServer().getMovieDAO();
+        try {
+            collectionManager.addMovie(movieDAO.addMovie(movie,1));
+        } catch (SQLException e) {
+            return new Response("Ошибка при добавлении элемента в базу данных: " + e.getMessage());
+        }
+
         return new Response("Элемент успешно добавлен в коллекцию");
     }
 

@@ -6,6 +6,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 /**
@@ -15,7 +16,7 @@ import java.time.ZonedDateTime;
 public class Person implements Serializable {
 
     private String name; // Поле не может быть null, строка не может быть пустой
-    private ZonedDateTime birthday; // Поле не может быть null
+    private LocalDate birthday; // Поле не может быть null
     private String passportID; // Длина строки должна быть не меньше 6, поле не может быть null
 
     /**
@@ -32,7 +33,7 @@ public class Person implements Serializable {
      *
      * @param birthday Дата рождения персонажа, не может быть null.
      */
-    public void setBirthday(ZonedDateTime birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -62,7 +63,7 @@ public class Person implements Serializable {
      */
     @XmlElement
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
-    public ZonedDateTime getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 

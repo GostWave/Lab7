@@ -1,6 +1,7 @@
 
 package server;
 
+import common.MovieDAO;
 import common.Request;
 import common.Response;
 import org.apache.logging.log4j.LogManager;
@@ -28,6 +29,7 @@ public class Server {
 //    private FileManager fileManager;
     private CommandManager commandManager;
     private static Server server;
+    private MovieDAO movieDAO;
 
     private Server() {}
 
@@ -180,5 +182,14 @@ public class Server {
 //    public FileManager getFileManager() {
 //        return fileManager;
 //    }
+
+
+    public void setMovieDAO(MovieDAO movieDAO) {
+        this.movieDAO = movieDAO;
+    }
+
+    public MovieDAO getMovieDAO() {
+        return movieDAO;
+    }
 }
 

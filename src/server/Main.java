@@ -12,11 +12,13 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Server.getServer().setCollectionManager(new CollectionManager());
-        CollectionManager collectionManager = Server.getServer().getCollectionManager();
+
+        CollectionManager collectionManager = new CollectionManager();
+        Server.getServer().setCollectionManager(collectionManager);
         try {
             DatabaseManager db = new DatabaseManager();
             MovieDAO movieDAO = new MovieDAO(db.getConnection());
+            Server.getServer().setMovieDAO(movieDAO);
             collectionManager.loadFromDatabase(movieDAO);
             System.out.println("Соединение с локальной БД успешно!");
         } catch (SQLException e) {
