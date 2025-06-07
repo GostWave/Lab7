@@ -4,22 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e148c56a-75bc-4a08-8fcb-724a44cec23c" name="Changes" comment="Create connection with local db">
+    <list default="true" id="e148c56a-75bc-4a08-8fcb-724a44cec23c" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/MovieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MovieDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/MovieFiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MovieFiller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/collectionObject/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/collectionObject/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/CollectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/Add.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/common/MovieFiller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/common/MovieFiller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/common/collectionObject/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/common/collectionObject/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/common/collectionObject/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/common/collectionObject/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/IO/CollectionChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/IO/CollectionChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/Clear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/common/MovieDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/common/MovieDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/CollectionManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Add.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/commands/Add.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/commands/Show.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749118104461</updated>
-      <workItem from="1749118105574" duration="12651000" />
+      <workItem from="1749118105574" duration="15763000" />
     </task>
     <task id="LOCAL-00001" summary="init from lab6">
       <option name="closed" value="true" />
@@ -110,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749158879075</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update">
+      <option name="closed" value="true" />
+      <created>1749241707969</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1749241707969</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +120,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init from lab6" />
     <MESSAGE value="Create connection with local db" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create connection with local db" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>
