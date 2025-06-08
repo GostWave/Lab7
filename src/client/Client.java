@@ -15,8 +15,8 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Client {
-    private static final String SERVER_HOST = "localhost";
-    //    private static final String SERVER_HOST = "helios.cs.ifmo.ru";
+//    private static final String SERVER_HOST = "localhost";
+        private static final String SERVER_HOST = "helios.cs.ifmo.ru";
     private static final int SERVER_PORT = 5011;
     private static final int BUFFER_SIZE = 8192;
     private static Client client;
@@ -30,6 +30,10 @@ public class Client {
         this.host = host;
         this.port = port;
     }
+
+
+
+
 
     public static Client getClient() {
         if (client == null) {

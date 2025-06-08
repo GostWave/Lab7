@@ -38,7 +38,7 @@ package server.commands;
 import common.Response;
 import common.collectionObject.Movie;
 import server.CollectionManager;
-import common.MovieDAO;
+import server.MovieDAO;
 import server.Server;
 
 import java.io.Serializable;

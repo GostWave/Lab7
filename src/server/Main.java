@@ -1,9 +1,6 @@
 package server;
 
-import common.DatabaseManager;
 //import server.IO.FileManager;
-import common.MovieDAO;
-import common.UserDAO;
 import server.commands.*;
 
 import java.sql.SQLException;

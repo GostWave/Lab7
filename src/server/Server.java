@@ -1,10 +1,10 @@
 //
 //package server;
 //
-//import common.MovieDAO;
+//import server.MovieDAO;
 //import common.Request;
 //import common.Response;
-//import common.UserDAO;
+//import server.UserDAO;
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
 ////import server.IO.FileManager;
@@ -225,10 +225,8 @@
 
 package server;
 
-import common.MovieDAO;
 import common.Request;
 import common.Response;
-import common.UserDAO;
 import server.commands.Command;
 
 import java.io.*;
@@ -245,7 +243,7 @@ public class Server {
     private static final int BUFFER_SIZE = 8192;
 
     private final ExecutorService readPool = Executors.newCachedThreadPool();
-    private final ExecutorService workPool = Executors.newFixedThreadPool(8);
+    private final ExecutorService workPool = Executors.newFixedThreadPool(6);
     private final ExecutorService writePool = Executors.newCachedThreadPool();
 
     private CollectionManager collectionManager;
@@ -365,21 +363,12 @@ public class Server {
                         ByteBuffer responseBuffer = ByteBuffer.wrap(responseBytes);
                         clientChannel.write(responseBuffer);
                     } catch (IOException e) {
-                        System.err.println("Ошибка при отправке ответа клиенту: " + e.getMessage());
-                        e.printStackTrace();
+                        System.err.println("Ошибка при отправке ответа клиенту: " );
                     }
                 });
             });
 
         } catch (IOException | ClassNotFoundException e) {
-
-                System.out.println("Ошибка при чтении запроса, соединение закрывается.");
-//                clientChannel.close();
-//            } catch (IOException ex) {
-//                System.out.println("Ошибка при закрытии канала.");
-//            }
-
-
         }
     }
 

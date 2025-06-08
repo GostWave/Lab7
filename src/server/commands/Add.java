@@ -1,6 +1,6 @@
 package server.commands;
 
-import common.MovieDAO;
+import server.MovieDAO;
 import common.Response;
 import common.collectionObject.Movie;
 import server.CollectionManager;

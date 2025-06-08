@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Lab6:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e148c56a-75bc-4a08-8fcb-724a44cec23c" name="Changes" comment=" update">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Lab6_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/ExecuteScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/commands/Shuffle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/Shuffle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/commands/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/Update.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/client/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/common/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/common/DatabaseManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/common/MovieDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/common/MovieDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/CollectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/commands/Shuffle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/commands/Shuffle.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +64,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "JAR Application.Lab6.jar.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
@@ -62,12 +74,23 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Lab6.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Lab6_jar/Lab6.jar" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.Lab6.jar" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -84,7 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749118104461</updated>
-      <workItem from="1749118105574" duration="35870000" />
+      <workItem from="1749118105574" duration="40236000" />
     </task>
     <task id="LOCAL-00001" summary="init from lab6">
       <option name="closed" value="true" />
@@ -150,7 +173,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749384280766</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary=" update">
+      <option name="closed" value="true" />
+      <created>1749386567223</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1749386567223</updated>
+    </task>
+    <task id="LOCAL-00010" summary=" update">
+      <option name="closed" value="true" />
+      <created>1749386631701</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1749386631701</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

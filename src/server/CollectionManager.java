@@ -1,9 +1,6 @@
 package server;
 
-import common.MovieDAO;
-import common.MovieFiller;
 import common.collectionObject.Movie;
-import common.collectionObject.Movies;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -11,8 +8,6 @@ import java.util.stream.Collectors;
 
 import static java.lang.String.valueOf;
 
-
-import common.collectionObject.Movie;
 
 import java.util.concurrent.ConcurrentHashMap;
 
