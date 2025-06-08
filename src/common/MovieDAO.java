@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MovieDAO {
     private final Connection connection;
-
+    private long id;
     public MovieDAO(Connection connection) {
         this.connection = connection;
     }
@@ -68,7 +68,7 @@ public class MovieDAO {
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                long id = rs.getLong("id");
+                id = rs.getLong("id");
                 movie.setId(id);
                 return movie;
             } else {
@@ -76,5 +76,31 @@ public class MovieDAO {
             }
         }
     }
+    public void clearMoviesByUser(int userId) throws SQLException {
+        String sql = "DELETE FROM movies WHERE user_id = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            stmt.executeUpdate();
+        }
+        if (isMoviesTableEmpty()){
+            try (Statement stmt = connection.createStatement()) {
+                stmt.execute("TRUNCATE TABLE movies RESTART IDENTITY CASCADE");
+            }
+        }
+
+    }
+    public boolean isMoviesTableEmpty() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM movies";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count == 0;
+            }
+        }
+        throw new SQLException("Не удалось проверить пустоту таблицы.");
+    }
+
 
 }

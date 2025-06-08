@@ -3,6 +3,7 @@ package server;
 import common.DatabaseManager;
 //import server.IO.FileManager;
 import common.MovieDAO;
+import common.UserDAO;
 import server.commands.*;
 
 import java.sql.SQLException;
@@ -18,7 +19,9 @@ public class Main {
         try {
             DatabaseManager db = new DatabaseManager();
             MovieDAO movieDAO = new MovieDAO(db.getConnection());
+            UserDAO userDAO = new UserDAO(db.getConnection());
             Server.getServer().setMovieDAO(movieDAO);
+            Server.getServer().setUserDAO(userDAO);
             collectionManager.loadFromDatabase(movieDAO);
             System.out.println("Соединение с локальной БД успешно!");
         } catch (SQLException e) {
@@ -33,7 +36,7 @@ public class Main {
         server.setCommandManager(commandManager);
 
 
-        server.setCollectionManager(new CollectionManager());
+
 //        server.setFileManager(new FileManager());
 //        server.setConsoleCaller(new ConsoleCaller(new Save()));
 
@@ -45,7 +48,7 @@ public class Main {
         commandManager.registerCommand("info", new Info());
         commandManager.registerCommand("add", new Add());
         commandManager.registerCommand("show", new Show());
-//        commandManager.registerCommand("clear", new Clear());
+        commandManager.registerCommand("clear", new Clear());
 //        commandManager.registerCommand("shuffle", new Shuffle());
 //        commandManager.registerCommand("update_id", new Update());
 //        commandManager.registerCommand("remove_by_id", new Remove());
@@ -54,6 +57,8 @@ public class Main {
 //        commandManager.registerCommand("execute_script", new ExecuteScript());
         commandManager.registerCommand("group_counting_by_oscarsCount", new GroupCounting());
         commandManager.registerCommand("add_if_max", new AddIfMax());
+        commandManager.registerCommand("register", new Register());
+        commandManager.registerCommand("login", new Login());
 
 
 

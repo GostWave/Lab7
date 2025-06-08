@@ -4,6 +4,7 @@ package server;
 import common.MovieDAO;
 import common.Request;
 import common.Response;
+import common.UserDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 //import server.IO.FileManager;
@@ -30,6 +31,7 @@ public class Server {
     private CommandManager commandManager;
     private static Server server;
     private MovieDAO movieDAO;
+    private UserDAO userDAO;
 
     private Server() {}
 
@@ -190,6 +192,14 @@ public class Server {
 
     public MovieDAO getMovieDAO() {
         return movieDAO;
+    }
+
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    public UserDAO getUserDAO() {
+        return userDAO;
     }
 }
 

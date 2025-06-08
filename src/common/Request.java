@@ -7,6 +7,7 @@ public class Request implements Serializable {
     private final String commandStrArg;
     private final Serializable commandObjArg;
 
+
     public Request(String commandName, String commandStrArg, Serializable commandObjArg) {
         this.commandName = commandName;
         this.commandStrArg = commandStrArg;
@@ -16,6 +17,8 @@ public class Request implements Serializable {
     public Request(String commandName, String commandStrArg) {
         this(commandName, commandStrArg, null);
     }
+
+
 
 
     public String getCommandName() {

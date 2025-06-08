@@ -216,18 +216,19 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 public class CollectionManager {
-    private final ConcurrentHashMap<Long, Movie> movieMap = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Long, Movie> movieMap = new ConcurrentHashMap<>();
 
-    public void loadFromDatabase(List<Movie> movies) {
-        movieMap.clear();
-        for (Movie movie : movies) {
-            movieMap.put(movie.getId(), movie);
-        }
-    }
+//    public void loadFromDatabase(List<Movie> movies) {
+//        movieMap.clear();
+//        for (Movie movie : movies) {
+//            movieMap.put(movie.getId(), movie);
+//        }
+//    }
 
     public void addMovie(Movie movie) {
         movieMap.put(movie.getId(), movie);
     }
+
 
     public void updateMovie(Long id, Movie updatedMovie) {
         movieMap.put(id, updatedMovie);
@@ -235,6 +236,9 @@ public class CollectionManager {
 
     public void removeMovie(Movie movie) {
         movieMap.remove(movie.getId());
+    }
+    public void clearCollection(){
+        movieMap.clear();
     }
 
     public Collection<Movie> getCollection() {

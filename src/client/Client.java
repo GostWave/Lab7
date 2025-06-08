@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class Client {
     private static final String SERVER_HOST = "localhost";
-//    private static final String SERVER_HOST = "helios.cs.ifmo.ru";
+    //    private static final String SERVER_HOST = "helios.cs.ifmo.ru";
     private static final int SERVER_PORT = 5011;
     private static final int BUFFER_SIZE = 8192;
     private static Client client;
@@ -28,8 +28,8 @@ public class Client {
         this.port = port;
     }
 
-    public static Client getClient(){
-        if(client == null){
+    public static Client getClient() {
+        if (client == null) {
             try {
                 client = new Client(InetAddress.getByName(SERVER_HOST), SERVER_PORT);
             } catch (UnknownHostException e) {
@@ -38,46 +38,58 @@ public class Client {
         }
         return client;
     }
+
     public void start() {
-        while (true){
-        try (SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress(SERVER_HOST, SERVER_PORT));
-             Scanner scanner = new Scanner(System.in)) {
+        while (true) {
+            try (SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress(SERVER_HOST, SERVER_PORT));
+                 Scanner scanner = new Scanner(System.in)) {
 
-            System.out.println("Подключено к серверу " + SERVER_HOST + ":" + SERVER_PORT);
-
-            while (true) {
-                String argument="";
-                String commandName="";
-                try {
-                    System.out.print("Введите команду (или 'exit' для выхода): ");
-                    String[] text = scanner.nextLine().trim().split(" ");
-                    commandName = text[0];
-
-                    if (text.length>1){
-                        argument=text[1];
+                System.out.println("Подключено к серверу " + SERVER_HOST + ":" + SERVER_PORT);
+                while (true) {
+                    sendRequest(socketChannel, auth());
+                    Response response = receiveResponse(socketChannel);
+                    if (response != null) {
+                        System.out.println(response.getMessage());
+                        if (response.getMessage().equals("Пользователь успешно зарегистрирован.") || response.getMessage().equals("Успешный вход в систему.")) {
+                            break;
+                        }
+                    } else {
+                        System.out.println("Ошибка получения ответа от сервера.");
                     }
-                    if (commandName.equalsIgnoreCase("exit")) {
-                        System.out.println("Отключение от сервера...");
+                }
+                while (true) {
+                    String argument = "";
+                    String commandName = "";
+                    try {
+                        System.out.print("Введите команду (или 'exit' для выхода): ");
+                        String[] text = scanner.nextLine().trim().split(" ");
+                        commandName = text[0];
+
+                        if (text.length > 1) {
+                            argument = text[1];
+                        }
+                        if (commandName.equalsIgnoreCase("exit")) {
+                            System.out.println("Отключение от сервера...");
+                            System.exit(0);
+                        }
+                    } catch (NoSuchElementException e) {
+                        System.out.println("Завершение по Ctrl+D...");
                         System.exit(0);
                     }
-                } catch (NoSuchElementException e) {
-                    System.out.println("Завершение по Ctrl+D...");
-                    System.exit(0);
+
+                    Request request = createRequest(commandName, argument);
+
+
+                    sendRequest(socketChannel, request);
+
+
+                    Response response = receiveResponse(socketChannel);
+                    if (response != null) {
+                        System.out.println(response.getMessage());
+                    } else {
+                        System.out.println("Ошибка получения ответа от сервера.");
+                    }
                 }
-
-                Request request = createRequest(commandName,argument);
-
-
-                sendRequest(socketChannel, request);
-
-
-                Response response = receiveResponse(socketChannel);
-                if (response != null) {
-                    System.out.println(response.getMessage());
-                } else {
-                    System.out.println("Ошибка получения ответа от сервера.");
-                }
-            }
 
             } catch (IOException e) {
                 System.out.println("Сервер не доступен. Повторное подключение...");
@@ -122,8 +134,8 @@ public class Client {
         }
     }
 
-    public Request createRequest(String command, String argument){
-        if (command.equalsIgnoreCase("add") || command.startsWith("update_id") || command.equalsIgnoreCase("add_if_max")){
+    public Request createRequest(String command, String argument) {
+        if (command.equalsIgnoreCase("add") || command.startsWith("update_id") || command.equalsIgnoreCase("add_if_max")) {
             MovieFiller movieFiller = new MovieFiller();
             Movie objArgument = movieFiller.fill(new Movie());
             if (objArgument != null) {
@@ -136,6 +148,22 @@ public class Client {
         } else {
             return new Request(command, argument);
         }
+    }
+
+    public Request auth() {
+        while (true) {
+            System.out.println("Для авторизации введите login/для регистрации введите register");
+            Scanner scanner = new Scanner(System.in);
+            String text = scanner.nextLine().trim();
+            if (text.equalsIgnoreCase("login") || text.equalsIgnoreCase("register")) {
+                System.out.println("Введите логин и пароль через пробел");
+                String loginPass = scanner.nextLine().trim();
+                return createRequest(text, loginPass);
+            } else {
+                System.out.println("Неверная команда. Попробуйте снова.");
+            }
+        }
+
     }
 }
 
