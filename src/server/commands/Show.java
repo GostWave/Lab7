@@ -12,7 +12,7 @@ public class Show extends Command {
 
 
     @Override
-    public Response execute(String strArg, Serializable objArg) {
+    public Response execute(String strArg, Serializable objArg, Integer userId) {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         if (collectionManager.getCollection().isEmpty()) {
             return new Response("Коллекция пуста, нечего выводить");

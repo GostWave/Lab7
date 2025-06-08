@@ -16,7 +16,7 @@ public class Info extends Command {
      * Выполняет команду вывода информации о коллекции, включая её тип, тип элементов, дату инициализации и количество элементов.
      */
     @Override
-    public Response execute(String strArg, Serializable objArg)  {
+    public Response execute(String strArg, Serializable objArg, Integer userId)  {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         StringBuilder out = new StringBuilder();
         if (!collectionManager.getCollection().isEmpty()) {

@@ -17,7 +17,7 @@ public class Help extends Command {
      * Выполняет команду вывода списка доступных команд и их описаний.
      */
     @Override
-    public Response execute(String strArg, Serializable objArg) {
+    public Response execute(String strArg, Serializable objArg, Integer userId) {
         CommandManager commandManager = Server.getServer().getCommandManager();
         Map<String, Command> commands = commandManager.getCommands();
 

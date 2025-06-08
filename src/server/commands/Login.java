@@ -11,7 +11,7 @@ public class Login extends Command{
     String login;
     String pass;
     @Override
-    public Response execute(String strArg, Serializable objArg) {
+    public Response execute(String strArg, Serializable objArg, Integer userId) {
         try {
             login = strArg.split(" ")[0];
             pass = strArg.split(" ")[1];

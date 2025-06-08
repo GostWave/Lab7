@@ -18,7 +18,7 @@ public class AddIfMax extends Command {
      * Выполняет команду добавления элемента, если его значение превышает максимальное в коллекции.
      */
     @Override
-    public Response execute(String strArg, Serializable objArg) {
+    public Response execute(String strArg, Serializable objArg, Integer userId) {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         Movie movie = (Movie) objArg;
         if (movie.getOscarsCount() > collectionManager.getMaxOscarsCount()) {

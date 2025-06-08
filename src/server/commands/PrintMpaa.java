@@ -16,7 +16,7 @@ public class PrintMpaa extends Command {
      * Выполняет команду, выводя уникальные значения поля mpaaRating из коллекции.
      */
     @Override
-    public Response execute(String strArg, Serializable objArg) {
+    public Response execute(String strArg, Serializable objArg, Integer userId) {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         HashSet<String> set = collectionManager.uniqueMpaa();
         StringBuilder out = new StringBuilder();

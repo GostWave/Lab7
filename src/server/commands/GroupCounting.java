@@ -20,7 +20,7 @@ public class GroupCounting extends Command {
      * Выводит количество фильмов в каждой группе.
      */
     @Override
-    public Response execute(String strArg, Serializable objArg) {
+    public Response execute(String strArg, Serializable objArg, Integer userId) {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         Map<Integer, Integer> grouped = new HashMap<>();
         StringBuilder out = new StringBuilder();

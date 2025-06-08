@@ -22,6 +22,9 @@ public class Client {
     private static Client client;
     private final InetAddress host;
     private final int port;
+    private String loginPass;
+    private String login;
+    private String pass;
 
     private Client(InetAddress host, int port) {
         this.host = host;
@@ -77,7 +80,7 @@ public class Client {
                         System.exit(0);
                     }
 
-                    Request request = createRequest(commandName, argument);
+                    Request request = createRequest(login,pass,commandName, argument);
 
 
                     sendRequest(socketChannel, request);
@@ -134,31 +137,51 @@ public class Client {
         }
     }
 
-    public Request createRequest(String command, String argument) {
+    public Request createRequest(String login, String pass, String command, String argument) {
         if (command.equalsIgnoreCase("add") || command.startsWith("update_id") || command.equalsIgnoreCase("add_if_max")) {
             MovieFiller movieFiller = new MovieFiller();
             Movie objArgument = movieFiller.fill(new Movie());
             if (objArgument != null) {
-                return new Request(command, argument, objArgument);
+                return new Request(login,pass,command, argument, objArgument);
             } else {
                 System.out.println("Ошибка при создании объекта Movie.");
                 return null;
             }
 
         } else {
-            return new Request(command, argument);
+            return new Request(login, pass, command, argument);
         }
     }
 
     public Request auth() {
+        String text = "";
         while (true) {
             System.out.println("Для авторизации введите login/для регистрации введите register");
             Scanner scanner = new Scanner(System.in);
-            String text = scanner.nextLine().trim();
+            try {
+                text = scanner.nextLine().trim();
+            } catch (NoSuchElementException e) {
+                System.out.println("Завершение по Ctrl+D...");
+                System.exit(0);
+            }
+            
             if (text.equalsIgnoreCase("login") || text.equalsIgnoreCase("register")) {
-                System.out.println("Введите логин и пароль через пробел");
-                String loginPass = scanner.nextLine().trim();
-                return createRequest(text, loginPass);
+                try {
+                    System.out.println("Введите логин и пароль через пробел");
+                    loginPass = scanner.nextLine().trim();
+                    try {
+                        login = loginPass.split(" ")[0];
+                        pass = loginPass.split(" ")[1];
+                        return new Request(login,pass,text,loginPass);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Неверный формат ввода. Пожалуйста, введите логин и пароль через пробел.");
+                    }
+
+                } catch (NoSuchElementException e) {
+                    System.out.println("Завершение по Ctrl+D...");
+                    System.exit(0);
+                }
+
             } else {
                 System.out.println("Неверная команда. Попробуйте снова.");
             }

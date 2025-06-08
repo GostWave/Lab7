@@ -16,7 +16,7 @@ public class PrintOscarsCount extends Command {
      * Выполняет команду, выводя значения поля oscarsCount всех элементов в коллекции.
      */
     @Override
-    public Response execute(String strArg, Serializable objArg) {
+    public Response execute(String strArg, Serializable objArg, Integer userId) {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         if (collectionManager.getCollection().isEmpty()) {
             return new Response("Коллекция пуста, невозможно вывести oscarsCount");

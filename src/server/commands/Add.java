@@ -13,14 +13,14 @@ public class Add extends Command {
 
 
     @Override
-    public Response execute(String strArg, Serializable objArg)  {
+    public Response execute(String strArg, Serializable objArg, Integer userId)  {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         Movie movie = (Movie) objArg;
 
 
         MovieDAO movieDAO = Server.getServer().getMovieDAO();
         try {
-            collectionManager.addMovie(movieDAO.addMovie(movie,1));
+            collectionManager.addMovie(movieDAO.addMovie(movie,userId));
         } catch (SQLException e) {
             return new Response("Ошибка при добавлении элемента в базу данных: " + e.getMessage());
         }

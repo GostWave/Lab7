@@ -18,6 +18,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
+import java.sql.SQLException;
 import java.util.Iterator;
 
 public class Server {
@@ -125,12 +126,23 @@ public class Server {
             System.out.println("Получена команда: " + request.getCommandName());
 
             Command command = commandManager.getCommandByKey(request.getCommandName());
-            Response response;
-            if (command != null) {
-                response = command.execute(request.getCommandStrArg(), request.getCommandObjArg());
-            } else {
-                response = new Response("Неизвестная команда: " + request.getCommandName());
+            Response response = null;
+            try {
+                Integer userId = userDAO.authenticate(request.getLogin(), request.getPass());
+                if (userId!= null){
+                    if (command != null) {
+                        response = command.execute(request.getCommandStrArg(), request.getCommandObjArg(),userId);
+                    } else {
+                        response = new Response("Неизвестная команда: " + request.getCommandName());
+                    }
+                } else {
+                    response = new Response("Неверные логин или пароль");
+                }
+            } catch (SQLException e){
+                System.out.println("Ошибка при аутентификации пользователя");
             }
+
+
 
 
 

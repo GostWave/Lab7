@@ -18,7 +18,7 @@ public class Clear extends Command {
      * Выполняет команду очистки коллекции.
      */
     @Override
-    public Response execute(String strArg, Serializable objArg) {
+    public Response execute(String strArg, Serializable objArg, Integer userId) {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         MovieDAO movieDAO = Server.getServer().getMovieDAO();
         if (collectionManager.getCollection().isEmpty()) {
