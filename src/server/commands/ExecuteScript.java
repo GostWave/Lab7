@@ -47,14 +47,14 @@ public class ExecuteScript extends Command {
                 } else if (text.contains("update")) {
                     if (element(scanner)){
                         try {
-                            collectionManager.updateElement(Long.parseLong(text.split(" ")[1]),movie, null);
+                            collectionManager.updateMovieById(Long.parseLong(text.split(" ")[1]),movie);
                         } catch (NumberFormatException e) {
                             return new Response("Ошибка при выполнении скрипта");
                         }
                     }
                 } else if (text.contains("insert")){
                     try {
-                        collectionManager.insertElement(movie,Integer.parseInt(text.split(" ")[1]));
+//                        collectionManager.insert(movie,Integer.parseInt(text.split(" ")[1]));
                     } catch (NumberFormatException e) {
                         return new Response("Ошибка при выполнении скрипта");
                     }
@@ -77,7 +77,7 @@ public class ExecuteScript extends Command {
                     }
                     Command command = commandManager.getCommandByKey(text);
                     if (command!=null){
-                        out.append(command.execute(argument, null).getMessage()+"\n\n");
+//                        out.append(command.execute(argument, null).getMessage()+"\n\n");
                     } else {
                         out.append("Неверное имя команды");
                         break;
@@ -96,7 +96,7 @@ public class ExecuteScript extends Command {
 
     public boolean element(Scanner scanner){
         movie=new Movie();
-        movie.setId(collectionManager.getCurrentid());
+//        movie.setId(collectionManager.getCurrentid());
         String text;
         movie.setName(scanner.nextLine().trim());
         Coordinates coordinates = new Coordinates();
@@ -156,7 +156,7 @@ public class ExecuteScript extends Command {
                 System.out.println("Ошибка при выполнении скрипта");
                 return false;
             }
-            person.setBirthday(date);
+//            person.setBirthday(date);
         } catch (Exception e) {
             System.out.println("Ошибка при выполнении скрипта");
             return false;
