@@ -16,7 +16,7 @@ public class Add extends Command {
     public Response execute(String strArg, Serializable objArg, Integer userId)  {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         Movie movie = (Movie) objArg;
-
+        movie.setOwnerId(userId);
 
         MovieDAO movieDAO = Server.getServer().getMovieDAO();
         try {

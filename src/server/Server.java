@@ -129,7 +129,7 @@ public class Server {
             Response response = null;
             try {
                 Integer userId = userDAO.authenticate(request.getLogin(), request.getPass());
-                if (userId!= null){
+                if (userId!= null | request.getCommandName().equals("register")){
                     if (command != null) {
                         response = command.execute(request.getCommandStrArg(), request.getCommandObjArg(),userId);
                     } else {

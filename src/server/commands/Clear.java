@@ -24,9 +24,9 @@ public class Clear extends Command {
         if (collectionManager.getCollection().isEmpty()) {
             return new Response("Коллекция не содержит элементов, которые можно было бы очистить");
         } else {
-            collectionManager.clearCollection();
+            collectionManager.clearMoviesByUser(userId);
             try {
-                movieDAO.clearMoviesByUser(1);
+                movieDAO.clearMoviesByUser(userId);
             } catch (SQLException e) {
                 return new Response("Произошла ошибка при очистке коллекции" );
             }

@@ -24,6 +24,8 @@ public class MovieDAO {
                 Movie movie = new Movie();
                 movie.setId(rs.getLong("id"));
                 movie.setName(rs.getString("name"));
+                movie.setOwnerId(rs.getInt("user_id"));
+
 
                 Coordinates coords = new Coordinates();
                 coords.setX(rs.getDouble("coordinates_x"));
@@ -101,6 +103,23 @@ public class MovieDAO {
         }
         throw new SQLException("Не удалось проверить пустоту таблицы.");
     }
+    public boolean checkOwnership(long movieId, int userId) throws SQLException {
+        String sql = "SELECT 1 FROM movies WHERE id = ? AND user_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setLong(1, movieId);
+            stmt.setInt(2, userId);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        }
+    }
+    public void deleteMovieById(long movieId) throws SQLException {
+        String sql = "DELETE FROM movies WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setLong(1, movieId);
+            stmt.executeUpdate();
+        }
+    }
+
 
 
 }

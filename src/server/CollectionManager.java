@@ -234,12 +234,17 @@ public class CollectionManager {
         movieMap.put(id, updatedMovie);
     }
 
-    public void removeMovie(Movie movie) {
-        movieMap.remove(movie.getId());
+    public void removeMovieById(long id) {
+        movieMap.remove(id);
     }
+
     public void clearCollection(){
         movieMap.clear();
     }
+    public void clearMoviesByUser(int userId) {
+        movieMap.entrySet().removeIf(entry -> entry.getValue().getOwnerId() == userId);
+    }
+
 
     public Collection<Movie> getCollection() {
         return movieMap.values();

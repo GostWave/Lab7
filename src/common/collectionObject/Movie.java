@@ -12,15 +12,11 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Класс, представляющий фильм.
- * Нелбходим для хранения информации о фильме, такой как название, координаты, жанр, рейтинг, количество Оскаров и т. д.
- */
-// Lombok
-@XmlRootElement()
-@XmlType(propOrder = {"name", "coordinates", "genre", "mpaaRating", "oscarsCount", "operator", "creationDate"})
-public class Movie implements Comparable<Movie>, Serializable {
 
+// Lombok
+
+public class Movie implements Comparable<Movie>, Serializable {
+    private Integer ownerId;
     private Long id ; // Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; // Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; // Поле не может быть null
@@ -188,18 +184,20 @@ public class Movie implements Comparable<Movie>, Serializable {
         return operator;
     }
 
-    /**
-     * Возвращает строковое представление фильма.
-     * Строка содержит информацию о названии, координатах, жанре, количестве Оскаров,
-     * рейтинге MPAA и режиссере.
-     *
-     * @return строковое представление фильма
-     */
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return "Movie{" +
-                "creationDate: " + creationDate +
+                "ownerId = " + ownerId +
+                ", creationDate: " + creationDate +
                 ", id = " + id +
                 ", name: " + name +
                 ", Coordinate X: " + coordinates.getX() +
