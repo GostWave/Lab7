@@ -289,5 +289,8 @@ public class CollectionManager {
             System.err.println("Ошибка при загрузке коллекции из БД: " + e.getMessage());
         }
     }
-
+    public void updateMovieById(long id, Movie newMovie) {
+        newMovie.setId(id);
+        movieMap.put(id, newMovie);
+    }
 }
