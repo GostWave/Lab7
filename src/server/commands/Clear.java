@@ -1,6 +1,6 @@
 package server.commands;
 
-import server.MovieDAO;
+import server.DB.MovieDBProvider;
 import common.Response;
 
 import server.CollectionManager;
@@ -20,13 +20,13 @@ public class Clear extends Command {
     @Override
     public Response execute(String strArg, Serializable objArg, Integer userId) {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
-        MovieDAO movieDAO = Server.getServer().getMovieDAO();
+        MovieDBProvider movieDBProvider = Server.getServer().getMovieDAO();
         if (collectionManager.getCollection().isEmpty()) {
             return new Response("Коллекция не содержит элементов, которые можно было бы очистить");
         } else {
             collectionManager.clearMoviesByUser(userId);
             try {
-                movieDAO.clearMoviesByUser(userId);
+                movieDBProvider.clearMoviesByUser(userId);
             } catch (SQLException e) {
                 return new Response("Произошла ошибка при очистке коллекции" );
             }

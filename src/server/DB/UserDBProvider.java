@@ -1,14 +1,14 @@
-package server;
+package server.DB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAO {
+public class UserDBProvider {
     private final Connection connection;
 
-    public UserDAO(Connection connection) {
+    public UserDBProvider(Connection connection) {
         this.connection = connection;
     }
 

@@ -1,6 +1,9 @@
 package server;
 
 //import server.IO.FileManager;
+import server.DB.DatabaseManager;
+import server.DB.MovieDBProvider;
+import server.DB.UserDBProvider;
 import server.commands.*;
 
 import java.sql.SQLException;
@@ -15,11 +18,11 @@ public class Main {
         Server.getServer().setCollectionManager(collectionManager);
         try {
             DatabaseManager db = new DatabaseManager();
-            MovieDAO movieDAO = new MovieDAO(db.getConnection());
-            UserDAO userDAO = new UserDAO(db.getConnection());
-            Server.getServer().setMovieDAO(movieDAO);
-            Server.getServer().setUserDAO(userDAO);
-            collectionManager.loadFromDatabase(movieDAO);
+            MovieDBProvider movieDBProvider = new MovieDBProvider(db.getConnection());
+            UserDBProvider userDBProvider = new UserDBProvider(db.getConnection());
+            Server.getServer().setMovieDAO(movieDBProvider);
+            Server.getServer().setUserDAO(userDBProvider);
+            collectionManager.loadFromDatabase(movieDBProvider);
             System.out.println("Соединение с локальной БД успешно!");
         } catch (SQLException e) {
             System.out.println("Не удалось подключиться к локальной БД. Проверьте настройки подключения.");

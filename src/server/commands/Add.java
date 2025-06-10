@@ -1,6 +1,6 @@
 package server.commands;
 
-import server.MovieDAO;
+import server.DB.MovieDBProvider;
 import common.Response;
 import common.collectionObject.Movie;
 import server.CollectionManager;
@@ -18,9 +18,9 @@ public class Add extends Command {
         Movie movie = (Movie) objArg;
         movie.setOwnerId(userId);
 
-        MovieDAO movieDAO = Server.getServer().getMovieDAO();
+        MovieDBProvider movieDBProvider = Server.getServer().getMovieDAO();
         try {
-            collectionManager.addMovie(movieDAO.addMovie(movie,userId));
+            collectionManager.addMovie(movieDBProvider.addMovie(movie,userId));
         } catch (SQLException e) {
             return new Response("Ошибка при добавлении элемента в базу данных: " + e.getMessage());
         }

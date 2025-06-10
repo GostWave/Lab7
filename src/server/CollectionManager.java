@@ -1,6 +1,7 @@
 package server;
 
 import common.collectionObject.Movie;
+import server.DB.MovieDBProvider;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -272,10 +273,10 @@ public class CollectionManager {
     public int size() {
         return movieMap.size();
     }
-    public void loadFromDatabase(MovieDAO movieDAO) {
+    public void loadFromDatabase(MovieDBProvider movieDBProvider) {
 
         try {
-            List<Movie> fromDb = movieDAO.getAllMovies();
+            List<Movie> fromDb = movieDBProvider.getAllMovies();
             for (Movie m : fromDb) {
                 movieMap.put(m.getId(), m);
             }

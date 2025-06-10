@@ -15,8 +15,8 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Client {
-//    private static final String SERVER_HOST = "localhost";
-        private static final String SERVER_HOST = "helios.cs.ifmo.ru";
+    private static final String SERVER_HOST = "localhost";
+//        private static final String SERVER_HOST = "helios.cs.ifmo.ru";
     private static final int SERVER_PORT = 5011;
     private static final int BUFFER_SIZE = 8192;
     private static Client client;
@@ -30,9 +30,6 @@ public class Client {
         this.host = host;
         this.port = port;
     }
-
-
-
 
 
     public static Client getClient() {
@@ -170,17 +167,33 @@ public class Client {
             }
             
             if (text.equalsIgnoreCase("login") || text.equalsIgnoreCase("register")) {
+//                Console console = System.console();
+
                 try {
-                    System.out.println("Введите логин и пароль через пробел");
-                    loginPass = scanner.nextLine().trim();
-                    try {
-                        login = loginPass.split(" ")[0];
-                        pass = loginPass.split(" ")[1];
-                        return new Request(login,pass,text,loginPass);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("Неверный формат ввода. Пожалуйста, введите логин и пароль через пробел.");
+                    while (true) {
+                        System.out.println("Введите логин");
+                        login = scanner.nextLine().trim();
+//                        login = console.readLine().trim();
+                        if (login.isEmpty() | login == null) {
+                            System.out.println("Логин не может быть пустым.");
+                        } else {
+                            break;
+                        }
                     }
 
+                    while (true) {
+                        System.out.println("Введите пароль");
+                        pass = scanner.nextLine().trim();
+//                        char[] passchar = console.readPassword();
+//                        pass=new String(passchar);
+                        if (pass.isEmpty() | pass == null) {
+                            System.out.println("Логин не может быть пустым.");
+                        } else {
+                            break;
+                        }
+                    }
+                    loginPass = login + " " + pass;
+                    return new Request(login,pass,text,loginPass);
                 } catch (NoSuchElementException e) {
                     System.out.println("Завершение по Ctrl+D...");
                     System.exit(0);

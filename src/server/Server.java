@@ -227,6 +227,8 @@ package server;
 
 import common.Request;
 import common.Response;
+import server.DB.MovieDBProvider;
+import server.DB.UserDBProvider;
 import server.commands.Command;
 
 import java.io.*;
@@ -249,8 +251,8 @@ public class Server {
     private CollectionManager collectionManager;
     private CommandManager commandManager;
     private static Server server;
-    private MovieDAO movieDAO;
-    private UserDAO userDAO;
+    private MovieDBProvider movieDBProvider;
+    private UserDBProvider userDBProvider;
 
     private Server() {}
 
@@ -331,7 +333,7 @@ public class Server {
                 Response response;
 
                 try {
-                    Integer userId = userDAO.authenticate(request.getLogin(), request.getPass());
+                    Integer userId = userDBProvider.authenticate(request.getLogin(), request.getPass());
 
                     if (userId != null || request.getCommandName().equals("register")) {
                         Command command = commandManager.getCommandByKey(request.getCommandName());
@@ -387,12 +389,12 @@ public class Server {
         this.commandManager = commandManager;
     }
 
-    public void setMovieDAO(MovieDAO movieDAO) {
-        this.movieDAO = movieDAO;
+    public void setMovieDAO(MovieDBProvider movieDBProvider) {
+        this.movieDBProvider = movieDBProvider;
     }
 
-    public void setUserDAO(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public void setUserDAO(UserDBProvider userDBProvider) {
+        this.userDBProvider = userDBProvider;
     }
     public CollectionManager getCollectionManager() {
         return collectionManager;
@@ -400,11 +402,11 @@ public class Server {
     public CommandManager getCommandManager() {
         return commandManager;
     }
-    public MovieDAO getMovieDAO() {
-        return movieDAO;
+    public MovieDBProvider getMovieDAO() {
+        return movieDBProvider;
     }
-    public UserDAO getUserDAO() {
-        return userDAO;
+    public UserDBProvider getUserDAO() {
+        return userDBProvider;
     }
 
 }

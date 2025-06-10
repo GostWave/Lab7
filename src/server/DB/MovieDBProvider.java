@@ -1,4 +1,4 @@
-package server;
+package server.DB;
 
 import common.collectionObject.*;
 
@@ -6,10 +6,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieDAO {
+public class MovieDBProvider {
     private final Connection connection;
     private long id;
-    public MovieDAO(Connection connection) {
+    public MovieDBProvider(Connection connection) {
         this.connection = connection;
     }
     public List<Movie> getAllMovies() throws SQLException {

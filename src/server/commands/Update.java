@@ -38,7 +38,7 @@ package server.commands;
 import common.Response;
 import common.collectionObject.Movie;
 import server.CollectionManager;
-import server.MovieDAO;
+import server.DB.MovieDBProvider;
 import server.Server;
 
 import java.io.Serializable;
@@ -46,7 +46,7 @@ import java.sql.SQLException;
 
 public class Update extends Command {
     private final CollectionManager collectionManager = Server.getServer().getCollectionManager();
-    private final MovieDAO movieDAO = Server.getServer().getMovieDAO();
+    private final MovieDBProvider movieDBProvider = Server.getServer().getMovieDAO();
 
 
 
@@ -71,12 +71,12 @@ public class Update extends Command {
 
         try {
             // 1. Проверка принадлежности
-            if (!movieDAO.checkOwnership(id, userId)) {
+            if (!movieDBProvider.checkOwnership(id, userId)) {
                 return new Response("Вы не можете изменить чужой фильм или фильм не найден.");
             }
 
             // 2. Обновление в БД
-            boolean updatedInDb = movieDAO.updateMovieById(id, newMovie, userId);
+            boolean updatedInDb = movieDBProvider.updateMovieById(id, newMovie, userId);
             if (!updatedInDb) {
                 return new Response("Ошибка при обновлении фильма в базе данных.");
             }
