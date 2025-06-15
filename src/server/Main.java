@@ -20,7 +20,7 @@ public class Main {
             DatabaseManager db = new DatabaseManager();
             MovieDBProvider movieDBProvider = new MovieDBProvider(db.getConnection());
             UserDBProvider userDBProvider = new UserDBProvider(db.getConnection());
-            Server.getServer().setMovieDAO(movieDBProvider);
+            Server.getServer().setMovieDBProvider(movieDBProvider);
             Server.getServer().setUserDAO(userDBProvider);
             collectionManager.loadFromDatabase(movieDBProvider);
             System.out.println("Соединение с локальной БД успешно!");
@@ -59,6 +59,7 @@ public class Main {
         commandManager.registerCommand("add_if_max", new AddIfMax());
         commandManager.registerCommand("register", new Register());
         commandManager.registerCommand("login", new Login());
+        commandManager.registerCommand("insert_at",new Insert());
 
 
 

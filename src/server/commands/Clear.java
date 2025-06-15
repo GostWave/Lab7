@@ -20,8 +20,8 @@ public class Clear extends Command {
     @Override
     public Response execute(String strArg, Serializable objArg, Integer userId) {
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
-        MovieDBProvider movieDBProvider = Server.getServer().getMovieDAO();
-        if (collectionManager.getCollection().isEmpty()) {
+        MovieDBProvider movieDBProvider = Server.getServer().getMovieDBProvider();
+        if (collectionManager.getCollection().isEmpty() | collectionManager.getUserMovieCount(userId)==0) {
             return new Response("Коллекция не содержит элементов, которые можно было бы очистить");
         } else {
             collectionManager.clearMoviesByUser(userId);

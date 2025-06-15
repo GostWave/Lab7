@@ -18,7 +18,7 @@ public class Add extends Command {
         Movie movie = (Movie) objArg;
         movie.setOwnerId(userId);
 
-        MovieDBProvider movieDBProvider = Server.getServer().getMovieDAO();
+        MovieDBProvider movieDBProvider = Server.getServer().getMovieDBProvider();
         try {
             collectionManager.addMovie(movieDBProvider.addMovie(movie,userId));
         } catch (SQLException e) {

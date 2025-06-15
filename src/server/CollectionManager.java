@@ -240,6 +240,12 @@ public class CollectionManager {
     public void clearMoviesByUser(int userId) {
         movieMap.entrySet().removeIf(entry -> entry.getValue().getOwnerId() == userId);
     }
+    public int getUserMovieCount(int userId) {
+        return (int) movieMap.values().stream()
+                .filter(movie -> movie.getOwnerId() == userId)
+                .count();
+    }
+
 
 
     public Collection<Movie> getCollection() {
@@ -289,4 +295,17 @@ public class CollectionManager {
         newMovie.setId(id);
         movieMap.put(id, newMovie);
     }
+    public void setFromList(List<Movie> movies) {
+        movieMap.clear();
+        for (Movie movie : movies) {
+            movieMap.put(movie.getId(), movie);
+        }
+    }
+    public List<Long> getAllIds() {
+        return movieMap.keySet().stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+
 }

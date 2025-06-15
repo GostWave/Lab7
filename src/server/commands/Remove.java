@@ -13,7 +13,7 @@ public class Remove extends Command {
 
     @Override
     public Response execute(String strArg, Serializable objArg, Integer userId) {
-        MovieDBProvider movieDBProvider = Server.getServer().getMovieDAO();
+        MovieDBProvider movieDBProvider = Server.getServer().getMovieDBProvider();
         CollectionManager collectionManager = Server.getServer().getCollectionManager();
         long movieId = Long.parseLong(strArg);
         try {

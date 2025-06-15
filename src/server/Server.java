@@ -1,7 +1,7 @@
 //
 //package server;
 //
-//import server.MovieDAO;
+//import server.MovieDBProvider;
 //import common.Request;
 //import common.Response;
 //import server.UserDAO;
@@ -33,7 +33,7 @@
 ////    private FileManager fileManager;
 //    private CommandManager commandManager;
 //    private static Server server;
-//    private MovieDAO movieDAO;
+//    private MovieDBProvider movieDAO;
 //    private UserDAO userDAO;
 //
 //
@@ -205,11 +205,11 @@
 ////    }
 //
 //
-//    public void setMovieDAO(MovieDAO movieDAO) {
+//    public void setMovieDBProvider(MovieDBProvider movieDAO) {
 //        this.movieDAO = movieDAO;
 //    }
 //
-//    public MovieDAO getMovieDAO() {
+//    public MovieDBProvider getMovieDBProvider() {
 //        return movieDAO;
 //    }
 //
@@ -389,7 +389,7 @@ public class Server {
         this.commandManager = commandManager;
     }
 
-    public void setMovieDAO(MovieDBProvider movieDBProvider) {
+    public void setMovieDBProvider(MovieDBProvider movieDBProvider) {
         this.movieDBProvider = movieDBProvider;
     }
 
@@ -402,7 +402,7 @@ public class Server {
     public CommandManager getCommandManager() {
         return commandManager;
     }
-    public MovieDBProvider getMovieDAO() {
+    public MovieDBProvider getMovieDBProvider() {
         return movieDBProvider;
     }
     public UserDBProvider getUserDAO() {

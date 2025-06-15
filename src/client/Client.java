@@ -80,10 +80,12 @@ public class Client {
                         System.out.println("Завершение по Ctrl+D...");
                         System.exit(0);
                     }
-
-                    Request request = createRequest(login,pass,commandName, argument);
-
-
+                    Request request;
+                    if (commandWithArgument(commandName,argument)) {
+                        request = createRequest(login, pass, commandName, argument);
+                    } else {
+                        continue;
+                    }
                     sendRequest(socketChannel, request);
 
 
@@ -139,7 +141,7 @@ public class Client {
     }
 
     public Request createRequest(String login, String pass, String command, String argument) {
-        if (command.equalsIgnoreCase("add") || command.startsWith("update_id") || command.equalsIgnoreCase("add_if_max")) {
+        if (command.equalsIgnoreCase("add") || command.startsWith("update_id") || command.equalsIgnoreCase("add_if_max") || command.equalsIgnoreCase("insert_at")) {
             MovieFiller movieFiller = new MovieFiller();
             Movie objArgument = movieFiller.fill(new Movie());
             if (objArgument != null) {
@@ -204,6 +206,17 @@ public class Client {
             }
         }
 
+    }
+    public boolean commandWithArgument(String command, String argument){
+        if ((command.equalsIgnoreCase("update_id") | command.equalsIgnoreCase("remove_by_id")
+                | command.equalsIgnoreCase("execute_script") | command.equalsIgnoreCase("insert_at"))
+                & (argument.isEmpty())){
+            System.out.println("Ошибка: Вы не ввели аргумет команды, попробуте ещё раз.");
+            return false;
+
+        } else {
+            return true;
+        }
     }
 }
 

@@ -39,24 +39,20 @@ import common.Response;
 import common.collectionObject.Movie;
 import server.CollectionManager;
 import server.DB.MovieDBProvider;
+import server.DB.UserDBProvider;
 import server.Server;
 
 import java.io.Serializable;
 import java.sql.SQLException;
 
 public class Update extends Command {
-    private final CollectionManager collectionManager = Server.getServer().getCollectionManager();
-    private final MovieDBProvider movieDBProvider = Server.getServer().getMovieDAO();
-
 
 
     @Override
     public Response execute(String stringArg, Serializable objectArg, Integer userId) {
-        if (stringArg == null || stringArg.isEmpty()) {
-            return new Response("Не указан ID для обновления.");
-        }
-
         long id;
+        CollectionManager collectionManager = Server.getServer().getCollectionManager();
+        MovieDBProvider movieDBProvider = Server.getServer().getMovieDBProvider();
         try {
             id = Long.parseLong(stringArg);
         } catch (NumberFormatException e) {
@@ -68,20 +64,20 @@ public class Update extends Command {
         }
 
         Movie newMovie = (Movie) objectArg;
+        newMovie.setOwnerId(userId);
 
         try {
-            // 1. Проверка принадлежности
+
             if (!movieDBProvider.checkOwnership(id, userId)) {
                 return new Response("Вы не можете изменить чужой фильм или фильм не найден.");
             }
 
-            // 2. Обновление в БД
-            boolean updatedInDb = movieDBProvider.updateMovieById(id, newMovie, userId);
-            if (!updatedInDb) {
+
+            if (!movieDBProvider.updateMovieById(id, newMovie, userId)) {
                 return new Response("Ошибка при обновлении фильма в базе данных.");
             }
 
-            // 3. Обновление в памяти
+
             collectionManager.updateMovieById(id, newMovie);
 
             return new Response("Фильм с id = " + id + " успешно обновлён.");

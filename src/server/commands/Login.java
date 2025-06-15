@@ -1,6 +1,7 @@
 package server.commands;
 
 import common.Response;
+import server.DB.UserDBProvider;
 import server.Server;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ public class Login extends Command{
     String pass;
     @Override
     public Response execute(String strArg, Serializable objArg, Integer userId) {
+        UserDBProvider userDBProvider = Server.getServer().getUserDAO();
         try {
             login = strArg.split(" ")[0];
             pass = strArg.split(" ")[1];
@@ -27,6 +29,7 @@ public class Login extends Command{
         }
         try {
             if (Server.getServer().getUserDAO().authenticate(login, pass)!=null) {
+                System.out.println("Клиент авторизовался, userId = " + userDBProvider.authenticate(login,pass));
                 return new Response("Успешный вход в систему.");
             } else {
                 return new Response("Неверное имя пользователя или пароль.");

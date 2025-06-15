@@ -144,7 +144,33 @@ public class MovieDBProvider {
         }
     }
 
+    public void addMovieWithId(Movie movie, int userId, Long index) throws SQLException {
+        String sql = "INSERT INTO movies " +
+                "(id, name, coordinates_x, coordinates_y, creation_date, oscars_count, genre, mpaa_rating, " +
+                "operator_name, operator_birthday, operator_passport_id, user_id) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setLong(1, movie.getId());
+            stmt.setString(2, movie.getName());
+            stmt.setDouble(3, movie.getCoordinates().getX());
+            stmt.setLong(4, movie.getCoordinates().getY());
+            stmt.setDate(5, Date.valueOf(movie.getCreationDate()));
+            stmt.setInt(6, movie.getOscarsCount());
+            stmt.setString(7, movie.getGenre().name());
+            stmt.setString(8, movie.getMpaaRating().name());
+            stmt.setString(9, movie.getOperator().getName());
+            stmt.setDate(10, Date.valueOf(movie.getOperator().getBirthday()));
+            stmt.setString(11, movie.getOperator().getPassportID());
+            stmt.setInt(12, userId);
+
+            int rs = stmt.executeUpdate();
+
+            if (rs==0){
+                throw new SQLException("Фильм не был добавлен в базу данных");
+            }
+        }
+    }
 
 
 }
